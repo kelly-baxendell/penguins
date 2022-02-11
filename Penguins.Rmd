@@ -1,0 +1,21 @@
+---
+title: "Penguins"
+author: "Kelly B"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+This data is about penguins observed at the Palmer Station.
+
+![](https://www.sierraclub.org/sites/www.sierraclub.org/files/sierra/articles/sharing/Penguins%20TN.jpeg)
+
+
+## Single trait distribution
+
+## Relationship between multiple traits
+
+## Sexual dimorphism
