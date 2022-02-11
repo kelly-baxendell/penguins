@@ -16,6 +16,12 @@ This data is about penguins observed at the Palmer Station.
 
 ## Single trait distribution
 
+```{r bill length, include=FALSE}
+ggplot(data = penguins) +
+  geom_density(mapping = aes(x = bill_length_mm, fill = species), alpha=0.5)
+```
+
+
 ## Relationship between multiple traits
 
 ## Sexual dimorphism
