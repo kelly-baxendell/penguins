@@ -8,20 +8,57 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+```{r load packages, include=FALSE}
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+```
+
 ## Data
 This data is about penguins observed at the Palmer Station.
 
 ![](https://www.sierraclub.org/sites/www.sierraclub.org/files/sierra/articles/sharing/Penguins%20TN.jpeg)
 
+<br>
+<br>
 
 ## Single trait distribution
 
-```{r bill length, include=FALSE}
-ggplot(data = penguins) +
-  geom_density(mapping = aes(x = bill_length_mm, fill = species), alpha=0.5)
+Bill length tends to be the largest among Chinstrap and Gentoo penguins
+```{r bill length, echo=FALSE, warning=FALSE}
+ggplot(data=penguins) +
+  geom_density(mapping = aes(x = bill_length_mm, fill=species), alpha=0.5)
 ```
 
+<br>
 
 ## Relationship between multiple traits
 
+
+Adelie penguins generally have the short, deep bills, while Gentoo penguins have long, shallow bills.
+```{r bill length and depth, echo=FALSE, warning=FALSE}
+ggplot(data=penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species, fill = species)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = "y ~ x", alpha = 0.3) +
+  scale_color_viridis_d() +
+  scale_fill_viridis_d() +
+  labs(x = "Bill Length (mm)", y = "Bill Depth (mm)", fill = "Species", color = "Species")
+```
+
+
+<br>
+
 ## Sexual dimorphism
+
+Males tend to have larger bills across all three species.
+```{r bill length and depth by sex, echo=FALSE, warning=FALSE}
+ggplot(data=penguins, mapping = aes(x = bill_length_mm, y=bill_depth_mm, color=sex)) +
+  geom_point(size=1) +
+  facet_wrap(~species)
+```
+
+
+
+
+
